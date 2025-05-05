@@ -42,7 +42,9 @@ body {
     cursor:default;
     opacity: 0;
     animation:slideright 1s ease forwards;
-
+}
+.logo span{
+    color:#0ef;
 }
 
 /* Navbar styles */
@@ -67,7 +69,7 @@ body {
     width:100%;
     justify-content: space-between;
     height:100vh;
-    background:url(Jagalogo.jpg) no-repeat;
+    background:url(Assets/Jagalogoformain.jpg) no-repeat;
     background-size: cover;
     background-position:center;
     display:flex;
@@ -340,15 +342,15 @@ section{
 }
 
 .progress-line.javascript span { /* Fixed typo */
-    width: 85%;
+    width:80%;
 }
 
 .progress-line.react span {
-    width: 75%;
+    width: 80%;
 }
 
 .progress-line.python span {
-    width: 70%;
+    width:85%;
 }
 .progress-line span::after{
     position:absolute;
@@ -369,16 +371,16 @@ section{
     content:"90%";
 }
 .progress-line.css span::after{
-    content:"60%";
+    content:"80%";
 }
 .progress-line.javascrpt span::after{
-    content:"85%";
+    content:"80%";
 }
 .progress-line.python span::after{
-    content:"90%";
+    content:"85%";
 }
 .progress-line.react span::after{
-    content:"90%";
+    content:"80%";
 }
 .progress-line span::before{
     content:"";
@@ -767,5 +769,181 @@ section{
     100% {
         transform: translateY(0px);
         opacity: 1;
+    }
+}
+/* Extra small screens (phones, 320px and up) */
+@media (max-width: 320px) {
+    .home-content h1 {
+        font-size: 28px;  /* Adjust the font size */
+    }
+
+    .home-content p {
+        font-size: 16px;  /* Adjust the font size */
+    }
+
+    .navbar a {
+        font-size: 16px;  /* Adjust navbar links */
+        margin-left: 20px;  /* Reduce spacing */
+    }
+
+    .about {
+        grid-template-columns: 1fr;  /* Stack images and text */
+        padding: 10px;  /* Adjust padding */
+    }
+
+    .about-img img {
+        max-width: 100%;
+        margin-left: 0;
+    }
+
+    .contact {
+        grid-template-columns: 1fr;  /* Stack the contact sections */
+        padding: 15px;  /* Reduce padding */
+    }
+
+    .contact-form form input,
+    .contact-form form textarea {
+        width: 100%;  /* Ensure inputs take full width */
+    }
+
+    .btn-box {
+        width: 100%;  /* Full width button */
+        padding: 10px 20px;  /* Adjust button padding */
+    }
+}
+
+/* Small screens (phones, 480px and up) */
+@media (max-width: 480px) {
+    .home-content h1 {
+        font-size: 32px;  /* Adjust font size */
+    }
+
+    .navbar a {
+        font-size: 18px;  /* Adjust font size for smaller screens */
+        margin-left: 25px;  /* Adjust spacing */
+    }
+
+    .about {
+        grid-template-columns: 1fr;  /* Stack columns */
+        padding: 20px;  /* Adjust padding */
+    }
+
+    .about-img img {
+        max-width: 100%;
+        margin-top: 10%;
+    }
+
+    .contact {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form form input,
+    .contact-form form textarea {
+        width: 100%;
+    }
+
+    .btn-box {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+/* Medium screens (tablets, 768px and up) */
+@media (max-width: 768px) {
+    .home-content h1 {
+        font-size: 36px;  /* Adjust font size */
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar a {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .about {
+        grid-template-columns: 1fr;  /* Stack columns */
+        padding: 30px;  /* Adjust padding */
+    }
+
+    .about-img img {
+        max-width: 100%;
+        margin-left: 0;
+    }
+
+    .services-list {
+        grid-template-columns: 1fr;  /* Stack services on smaller screens */
+    }
+
+    .contact {
+        grid-template-columns: 1fr;  /* Stack contact sections */
+    }
+}
+
+/* Larger screens (desktops, 1024px and up) */
+@media (max-width: 1024px) {
+    .home-content h1 {
+        font-size: 40px;  /* Adjust font size */
+    }
+
+    .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .about {
+        grid-template-columns: repeat(2, 1fr);  /* Two columns layout */
+        padding: 40px;
+    }
+
+    .about-img img {
+        margin-top: 10%;
+    }
+
+    .services-list {
+        grid-template-columns: repeat(2, 1fr);  /* Two columns layout for services */
+    }
+
+    .contact {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Extra large screens (desktops larger than 1200px) */
+@media (min-width: 1200px) {
+    .home-content h1 {
+        font-size: 50px;  /* Maintain larger font size for large screens */
+    }
+
+    .about {
+        grid-template-columns: repeat(2, 1fr);  /* Keep the two-column layout */
+        padding: 50px;
+    }
+
+    .services-list {
+        grid-template-columns: repeat(3, 1fr);  /* Increase columns for large screens */
+    }
+
+    .contact {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media (max-width: 768px) {
+    .home {
+        background-size: cover;  /* Ensure image covers the entire container */
+        background-position: center center;  /* Keep the image centered */
+        background-attachment: scroll;  /* Disable fixed attachment on mobile for better performance */
+    }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+    .home {
+        background-size: cover;  /* Keep the image covering the container */
+        background-position: center center;
+        background-attachment: scroll; 
     }
 }
