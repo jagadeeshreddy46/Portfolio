@@ -279,58 +279,7 @@
             loop: true
         });
     };
-    // Initialize EmailJS (replace 'user_xxx' with your own EmailJS user ID)
-emailjs.init('Jagadeesh (7416901046@123)');
-
-// Adding event listener for form submission
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault();  // Prevent form from submitting the usual way
-
-    // Get form values
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
-
-    // Validate form fields
-    if (name === '' || email === '' || message === '') {
-        showMessage('All fields are required.', 'error');
-        return;
-    }
-
-    // Send the form data to EmailJS
-    const templateParams = {
-        from_name: name,
-        from_email: email,
-        message: message
-    };
-
-    emailjs.send('7416901046@123', 'template_kje87y3', templateParams)  // Replace with your service and template IDs
-        .then(function(response) {
-            console.log('SUCCESS!', response);
-            showMessage('Thank you for contacting us. Your message has been sent!', 'success');
-            document.getElementById('contactForm').reset(); // Optionally reset the form
-        }, function(error) {
-            console.log('FAILED...', error);
-            showMessage('Oops! Something went wrong, please try again later.', 'error');
-        });
-});
-
-// Function to display messages
-    function showMessage(message, type) {
-    const responseMessage = document.getElementById('responseMessage');
-    responseMessage.textContent = message;
-
-    // Style the message based on success or error
-    if (type === 'success') {
-        responseMessage.style.color = 'green';
-    } else if (type === 'error') {
-        responseMessage.style.color = 'red';
-    }
-}
-
-
-    // Adding event listener for the form submission
-
+   
    </script>
 </body>
 </html>               
