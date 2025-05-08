@@ -1,4 +1,3 @@
-/* Import Poppins font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* Reset default margin & padding */
@@ -7,29 +6,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    scroll-behavior: smooth;
     cursor:pointer;
 }
-
+html{
+    scroll-behavior: smooth;
+}
 /* Body styles */
 body {
     color: #ededed;
     background-color: #001b29;
-    /* Added dark background for better contrast */
-}
-
-/* Header styling */
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 10%;
-    background:#051129;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100;
 }
 
 /* Logo styling */
@@ -65,19 +50,102 @@ body {
 .navbar a:hover{
     color:#0ef;
 }
-.home{
-    position: relative;
-    width:100%;
-    justify-content: space-between;
-    height:100vh;
-    background:url(Assets/Jagalogoformain.jpg) no-repeat;
-    background-size: cover;
-    background-position:center;
-    display:flex;
-    align-items: center;
-    padding:70px 10% 0;
-    border:.1px solid rgb(232, 234, 236);
+
+.menu-icon {
+    display: none;
+    font-size: 30px;
+    color: #0ef;
+    cursor: pointer;
+    z-index: 200;
 }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        background: #051129;
+        width: 100%;
+        top: 70px;
+        left: 0;
+        padding: 20px 10%;
+        transition: max-height 0.3s ease-in-out;
+    }
+    .navbar.active {
+        display: flex;
+        max-height: 500px;
+    }
+    .menu-icon {
+        display: block;
+    }
+}
+
+/* Header styling */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background:#051129;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+/* Home Section */
+.home {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url(Assets/Jagalogoformain.jpg) no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    padding: 70px 10% 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .header {
+        padding: 15px 5%;
+    }
+    .home {
+        padding: 50px 5% 0;
+        background-position: center center;
+        background-size: cover;
+    }
+}
+
+@media (max-width: 768px) {
+    .home {
+        padding: 40px 4% 0;
+        background-size: contain;
+        height: 80vh;
+    }
+    .home-content h1 {
+        font-size: 40px;
+    }
+    .home-content p {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .home {
+        padding: 30px 3% 0;
+        background-size: cover;
+        height: 70vh;
+    }
+    .home-content h1 {
+        font-size: 35px;
+    }
+    .home-content p {
+        font-size: 16px;
+    }
+}
+
 .home-content{
     max-width:600px;
 }
@@ -668,6 +736,21 @@ section{
     0 0 25px cyan,0 0 50px cyan,
     0 0 100px cyan,0 0 200px cyan;
 }
+#success-message, #error-message {
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+#success-message {
+    background-color: #d4edda;
+    color: #155724;
+}
+#error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+}
 .last-text{
     width:100%;
     text-align: center;
@@ -774,74 +857,96 @@ section{
 }
 
 
-/* Mobile devices (max-width: 480px) */
+/* Responsive Design Media Queries */
 
-
-/* Mobile devices (max-width: 480px) */
-@media only screen and (max-width: 480px) {
-  .home-content h1 {
-    font-size: 24px;
-  }
-  .about-text h2 {
-    font-size: 20px;
-  }
-  .services-list div {
-    margin-bottom: 30px;
-  }
-}
-
-/* Mobile devices (max-width: 768px) */
+/* Mobile Styles (Up to 768px) */
 @media only screen and (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: center;
-  }
-  .navbar a {
-    margin: 10px 0;
-  }
-  .home-content {
-    flex-direction: column;
-    align-items: center;
-  }
-  .about {
-    flex-direction: column;
-  }
-  .about-img {
-    margin-bottom: 20px;
-    margin-right:90px;
-  }
-  .services-list {
-    flex-direction: column;
-  }
-  .contact-form input, .contact-form textarea {
-    width: 100%;
-  }
+    body {
+        padding: 0 20px;
+    }
+    .header {
+        padding: 15px 5%;
+    }
+    .logo {
+        font-size: 22px;
+    }
+    .navbar a {
+        font-size: 16px;
+        margin-left: 15px;
+    }
+    .home-content h1 {
+        font-size: 40px;
+    }
+    .home-content p {
+        font-size: 18px;
+    }
+    .about {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+    .about-img img {
+        margin-left: 0;
+        width: 90%;
+    }
+    .contact {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+    .contact-text h2 {
+        font-size: 60px;
+    }
+    .container1 {
+        width: 100%;
+        padding: 40px 20px;
+        margin: 0;
+    }
+    .services-list {
+        grid-template-columns: 1fr;
+    }
+    .portfolio-content {
+        grid-template-columns: 1fr;
+    }
 }
 
-/* Tablets (min-width: 769px) and (max-width: 1024px) */
-@media only screen and (min-width: 769px) and (max-width: 1024px) {
-  .home-content {
-    justify-content: space-around;
-  }
-  .about {
-    justify-content: space-around;
-  }
-  .services-list {
-    justify-content: space-around;
-  }
+/* Tablet Styles (768px to 1024px) */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .header {
+        padding: 20px 5%;
+    }
+    .navbar a {
+        font-size: 17px;
+        margin-left: 25px;
+    }
+    .home-content h1 {
+        font-size: 45px;
+    }
+    .home-content p {
+        font-size: 19px;
+    }
+    .about-img img {
+        width: 80%;
+        margin-left: 10%;
+    }
+    .contact-text h2 {
+        font-size: 70px;
+    }
+    .portfolio-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
 }
 
-/* Desktops (min-width: 1025px) */
-@media only screen and (min-width: 1025px) {
-  .home-content {
-    justify-content: space-between;
-  }
-  .about {
-    justify-content: space-between;
-  }
-  .services-list {
-    justify-content: space-between;
-  }
+/* Desktop Styles (Above 1024px) */
+@media only screen and (min-width: 1024px) {
+    .portfolio-content {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+    .services-list {
+        grid-template-columns: repeat(auto-fit, minmax(259px, 1fr));
+    }
+    .about-img img {
+        width: 100%;
+        margin-left: 0;
+    }
 }
-
-

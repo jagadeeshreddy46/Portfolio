@@ -17,14 +17,15 @@
     <header class="header">
         <a href="#" class="logo"><span>De</span>veloper</a>         
         <nav class="navbar">
-            <a href="#home" style="--i:1" class="active">Home</a>
+            <a href="#home" style="--i:1">Home</a>
             <a href="#about" style="--i:2" >About</a>
             <a href="#services" style="--i:3" >Services</a>
             <a href="#skills" style="--i:4" >Skills/Projects</a>
             <a href="#contact" style="--i:5" >Contact</a>              
         </nav>
+        <div class="menu-icon" id="menu-icon">☰</div>
     </header>
-    <section class="home">
+    <section class="home" id="#home">
         <div class="home-content">
             <h3>Hello,It's Me</h3>
             <h1>M Jagadeeswarreddy</h1>
@@ -239,29 +240,32 @@
         <h2>Contact <span>Me</span></h2>
         <h4>Let's Work Together</h4>
         <p>Whether you have a question, a project idea, or just want to say hello, I’d love to hear from you. I'm always excited to collaborate, learn new things, and take on creative challenges. Drop a message and I’ll get back to you as soon as possible!</p>
-        <div class="contact-list">
+        <ul class="contact-list">
             <li><i class='bx bx-send'></i>mekalajagadeeswarreddy@gmail.com</li>
             <li><i class='bx bx-phone'></i>7416901046</li>
-        </div>
+        </ul>
         <div class="contact-icons">
-            <a href="https://www.facebook.com/m.jagadeeswar.reddy.2025"><i class='bx bxl-facebook-circle' ></i></a>
-            <a href="https://x.com/mekalajaga73211"><i class='bx bxl-twitter' ></i></a>
-            <a href="https://www.instagram.com/in/m.jagadeesh_reddi_"><i class='bx bxl-instagram' ></i></a>
-            <a href="https://www.linkedin.com/in/jagadeeswar-reddy-mekala"><i class='bx bxl-linkedin' ></i></a>
+            <a href="https://www.facebook.com/m.jagadeeswar.reddy.2025" target="_blank"><i class='bx bxl-facebook-circle'></i></a>
+            <a href="https://x.com/mekalajaga73211" target="_blank"><i class='bx bxl-twitter'></i></a>
+            <a href="https://www.instagram.com/in/m.jagadeesh_reddi_" target="_blank"><i class='bx bxl-instagram'></i></a>
+            <a href="https://www.linkedin.com/in/jagadeeswar-reddy-mekala" target="_blank"><i class='bx bxl-linkedin'></i></a>
         </div>
     </div>
     <div class="contact-form">
-        <form action=""id=contact-form>
-            <input type="" placeholder="Enter Your Name" required>
-            <input type="email" placeholder="Enter Your Email" required>
-
-            <input type="" placeholder="Enter Your Subject">
-            <textarea name="" id="" cols="40" rows="10" placeholder="Enter Your Message"></textarea>
+        <form name='submit-to-google-sheet' id="contact-form">
+            <input type="text" name="name" placeholder="Enter Your Name" required>
+            <input type="email" name="email" placeholder="Enter Your Email" required>
+            <textarea name="message" cols="40" rows="10" placeholder="Enter Your Message" required></textarea>
             <input type="submit" value="Submit" class="send">
-            <div id="responseMessage"></div>
+            <div id="success-message" style="display:none; color: green; font-weight: bold; margin-top: 10px;">
+                Thank you! Your message has been sent successfully.
+            </div>
+            <div id="error-message" style="display:none; color: red; font-weight: bold; margin-top: 10px;">
+                Oops! Something went wrong. Please try again.
+            </div>
         </form>
     </div>
-    </section>
+</section>
 
 <div class="last-text">
     <p>Dveloped With Love By M Jagadeeswarrredy</p>
@@ -279,7 +283,35 @@
             loop: true
         });
     };
-   
+    const menuIcon = document.getElementById("menu-icon");
+        const navbar = document.getElementById("navbar");
+        menuIcon.addEventListener("click", () => {
+            navbar.classList.toggle("active");
+            menuIcon.classList.toggle("active");
+        });
    </script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbylaKFGBtA9kTP2nSCSDRXJmUmvm5RwClgfKon2h8H5g-AkHXcOrKNF3mQIbISIYESl/exec';
+    const form = document.forms['submit-to-google-sheet'];
+    const successMessage = document.getElementById('success-message');
+    const errorMessage = document.getElementById('error-message');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => {
+                console.log('Success!', response);
+                successMessage.style.display = 'block';
+                errorMessage.style.display = 'none';
+                form.reset();  // Clear the form after successful submission
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                successMessage.style.display = 'none';
+                errorMessage.style.display = 'block';
+            });
+    });
+</script>
+
 </body>
-</html>               
+</html>
