@@ -15,7 +15,10 @@
     </head>
 <body>
     <header class="header">
-        <a href="#" class="logo"><span>De</span>veloper</a>         
+        <a href="#" class="logo"><span>De</span>veloper</a>
+        <div class="hamburger-menu">
+            <i class='bx bx-menu'></i>
+        </div>       
         <nav class="navbar">
             <a href="#home" style="--i:1">Home</a>
             <a href="#about" style="--i:2" >About</a>
@@ -23,7 +26,6 @@
             <a href="#skills" style="--i:4" >Skills/Projects</a>
             <a href="#contact" style="--i:5" >Contact</a>              
         </nav>
-        <div class="menu-icon" id="menu-icon">☰</div>
     </header>
     <section class="home" id="#home">
         <div class="home-content">
@@ -283,12 +285,11 @@
             loop: true
         });
     };
-    const menuIcon = document.getElementById("menu-icon");
-        const navbar = document.getElementById("navbar");
+        const menuIcon = document.querySelector(".hamburger-menu");
+        const navbar = document.querySelector(".navbar");
         menuIcon.addEventListener("click", () => {
-            navbar.classList.toggle("active");
-            menuIcon.classList.toggle("active");
-        });
+        navbar.classList.toggle("active");
+});
    </script>
 <script>
     const scriptURL = 'https://script.google.com/macros/s/AKfycbylaKFGBtA9kTP2nSCSDRXJmUmvm5RwClgfKon2h8H5g-AkHXcOrKNF3mQIbISIYESl/exec';
