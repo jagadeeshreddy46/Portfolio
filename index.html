@@ -254,10 +254,10 @@
         </div>
     </div>
     <div class="contact-form">
-        <form name='submit-to-google-sheet' id="contact-form">
-            <input type="text" name="name" placeholder="Enter Your Name" required>
-            <input type="email" name="email" placeholder="Enter Your Email" required>
-            <textarea name="message" cols="40" rows="10" placeholder="Enter Your Message" required></textarea>
+        <form id="contact-form">
+            <input type="text" placeholder="Enter Your Name" required>
+            <input type="email" placeholder="Enter Your Email" required>
+            <textarea cols="40" rows="10" placeholder="Enter Your Message" required></textarea>
             <input type="submit" value="Submit" class="send">
             <div id="success-message" style="display:none; color: green; font-weight: bold; margin-top: 10px;">
                 Thank you! Your message has been sent successfully.
@@ -291,23 +291,28 @@
         navbar.classList.toggle("active");
 });
    </script>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbylaKFGBtA9kTP2nSCSDRXJmUmvm5RwClgfKon2h8H5g-AkHXcOrKNF3mQIbISIYESl/exec';
-    const form = document.forms['submit-to-google-sheet'];
+    // Initialize EmailJS
+    (function() {
+        emailjs.init("ypdKHa5ptzy2zPct6");
+    })();
+
+    const form = document.getElementById('contact-form');
     const successMessage = document.getElementById('success-message');
     const errorMessage = document.getElementById('error-message');
 
-    form.addEventListener('submit', e => {
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
-        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-            .then(response => {
-                console.log('Success!', response);
+        
+        emailjs.sendForm('7416901046@123', 'template_kje87y3', form)
+            .then(function(response) {
+                console.log('Success!', response.status, response.text);
                 successMessage.style.display = 'block';
                 errorMessage.style.display = 'none';
                 form.reset();  // Clear the form after successful submission
-            })
-            .catch(error => {
-                console.error('Error!', error.message);
+            }, function(error) {
+                console.error('Error!', error);
                 successMessage.style.display = 'none';
                 errorMessage.style.display = 'block';
             });
