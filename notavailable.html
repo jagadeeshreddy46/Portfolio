@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Clone Not Available</title>
+    <style>
+        @keyframes gradientShift {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(270deg, #141414, #1c1c1c, #141414);
+            background-size: 600% 600%;
+            animation: gradientShift 15s ease infinite;
+            color: #e50914;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 600px;
+            background: rgba(20, 20, 20, 0.9);
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 0 40px rgba(229, 9, 20, 0.6);
+            animation: fadeInUp 1.2s ease forwards;
+            opacity: 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 0.2em;
+            color: #e50914;
+            text-shadow: 0 0 10px #e50914;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1em;
+            color: #fff;
+            text-shadow: 0 0 6px #e50914;
+        }
+
+        p {
+            font-size: 1.25rem;
+            color: #ddd;
+            margin-bottom: 2em;
+            line-height: 1.5;
+        }
+
+        .back-button {
+            background-color: #e50914;
+            color: #fff;
+            padding: 0.75em 2em;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 20px rgba(229,9,20,0.7);
+        }
+
+        .back-button:hover {
+            background-color: #b00610;
+            box-shadow: 0 0 30px rgba(176,6,16,0.9);
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 1.5rem; }
+            p { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Netflix Clone</h1>
+        <h2>Project Not Available Yet</h2>
+        <p>
+            Sorry, the Netflix clone project is still under development.<br />
+            Please check back later or explore my other projects on GitHub.
+            If you want Check the github repository click on the link below.
+        </p>
+        <a href="index.html#projects" class="back-button">Go Back to Projects</a>
+        <a href="https://github.com/jagadeeshreddy46/Netflix-clone" target="_blank" class="back-button">Github</a>
+    </div>
+</body>
+</html>

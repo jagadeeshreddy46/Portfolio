@@ -587,74 +587,230 @@ section{
     grid-template-columns: repeat(3, 1fr);
     gap: 20px; /* Optional: adds spacing between items */
 }
+/* Modern Project Section Styles */
 
-
-.row{
-    position:relative;
-    overflow:hidden;
-    border-radius:8px;
-    cursor:pointer;
-}
-.row img {
-    width: 100%;
-    height: 250px; /* Set a consistent height */
-    object-fit: cover; /* Ensures images cover the area without distortion */
-    margin-top: 50px;
-    border-radius: 8px;
-    display: block;
-    transition: transform 0.5s;
-}
-
-.layer{
-    width:100%;
-    height:0;
-    background:linear-gradient(rgba(0,0,0,0.1),#0ef);
-    position:absolute;
-    border-radius:8px;
-    left:0;
-    bottom:0;
+.projects-section {
+    background-color: #001b29;
+    padding: 3rem 0; /* Reduced padding to decrease vertical space */
     overflow: hidden;
-    display:flex;
+}
+
+.section-header h2 {
+    font-size: 3rem;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 3rem;
+    letter-spacing: 2px;
+    position: relative;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.section-header h2 span {
+    color: #0ef;
+    font-weight: 700;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 0 2rem;
+}
+
+.project-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.4s, box-shadow 0.4s;
+    background-color: #1e1e1e;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.6s ease-in-out;
+}
+
+.project-card img {
+    width: 100%;
+    height: 280px; /* Reduced image height */
+    object-fit: cover;
+    border-radius: 15px;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+.project-card:hover img {
+    transform: scale(1.08) rotate(2deg);
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(14, 255, 239, 0.9);
+    color: #000;
+    padding: 2rem;
+    display: flex;
     flex-direction: column;
-    align-items:center;
+    align-items: center;
     justify-content: center;
     text-align: center;
-    padding:0 40px;
-    transition:height 0.5s;
+    border-radius: 15px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
-.layer h5{
-    color:#000;
-    font-size:1rem;
-    font-weight:600;
-    margin-bottom:15px;
+
+.project-card:hover .project-overlay {
+    opacity: 1;
 }
-.layer p{
-    color:#000;
-    font-size:1rem;
-    line-height:1.8;
+
+.project-overlay h5 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #000;
+    display: block;
 }
-.layer i{
-    color:#ff004f;
-    margin-top:20px;
-    font-size:20px;
-    margin-left:25%;
-    background: #fff;
-    width:50px;
-    height:50px;
-    display:flex;
-    align-items:center;
+
+.project-overlay p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* Container for links to space them */
+.project-links {
+    display: flex;
+    gap: 1rem; /* space between links */
     justify-content: center;
-    border-radius: 50%;
+    width: 100%;
 }
-.layer a{
+
+.project-link,
+.github-link {
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
     text-decoration: none;
+    transition: background-color 0.4s, color 0.4s;
+    display: inline-block;
 }
-.row:hover img{
-    transform:scale(1.1);
+
+/* Project link styles */
+.project-link {
+    background-color: #000;
+    color: #0ef;
 }
-.row:hover .layer{
-    height:100%;
+
+.project-link:hover {
+    background-color: #0ef;
+    color: #000;
 }
+
+/* GitHub link styles */
+.github-link {
+    background-color: #24292e;
+    color: #fff;
+}
+
+.github-link:hover {
+    background-color: #0ef;
+    color: #000;
+}
+
+/* Responsive Design */
+
+@media (max-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .project-card img {
+        height: 240px; /* Adjusted for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    .project-card img {
+        height: auto;
+        max-height: 220px; /* Adjusted for small screens */
+        border-radius: 15px 15px 0 0;
+    }
+
+    /* Show overlay always on small screens */
+    .project-overlay {
+        position: relative;
+        background: #0ef;
+        color: #000;
+        padding: 1rem 1.5rem;
+        opacity: 1 !important;
+        border-radius: 0 0 15px 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        transition: none;
+        height: auto;
+        max-height: none;
+        pointer-events: auto;
+        text-align: left;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    /* Keep hover effect for desktop intact */
+    .project-card:hover .project-overlay {
+        opacity: 1;
+    }
+
+    .project-overlay h5 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .project-overlay p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        margin-bottom: 1rem;
+    }
+
+    /* Stack links vertically with spacing on small screens */
+    .project-links {
+        flex-direction: column;
+        gap: 0.7rem;
+        align-items: flex-start;
+    }
+
+    .project-link,
+    .github-link {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .contact{
     display: grid;
     grid-template-columns: repeat(2,1fr);
@@ -663,18 +819,24 @@ section{
     padding-left:30px;
     margin-top:130px;
 }
-.contact-text h2{
+.contact-text h2 {
+    display: flex;
+    flex-direction:row;
+    align-items: center;
     font-size:90px;
-    line-height: 1;
-    text-align: center;
+    text-align:center;
+    margin-left:60%;
+    margin-bottom:40px;
+     /* This centers content horizontally inside the grid cell */
 }
 .contact-text h2 span{
     color:#0ef;
+    margin-left:20px;
 }
 .contact-text h4{
     margin:15px 0;
     color:rgb(228,228,228);
-    font-size:20px;
+    font-size:30px;
     font-weight:600;
 }
 .contact-text p{
@@ -726,6 +888,7 @@ section{
 }
 .contact-form form{
     position:relative;
+    margin-top:32%;
 }
 .contact-form form input,form textarea{
     border:none;
@@ -802,6 +965,119 @@ section{
 }
 
 
+/* Responsive Media Queries */
+
+/* For tablets and medium screens */
+@media (max-width: 992px) {
+  .contact {
+    grid-template-columns: 1fr; /* stack columns vertically */
+    padding-left: 15px;
+    margin-top: 80px;
+    gap: 2rem;
+  }
+
+  .contact-text h2 {
+    font-size: 60px;
+    margin-left: 0;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .contact-text h4 {
+    font-size: 24px;
+  }
+
+  .contact-text p {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .contact-list i {
+    font-size: 18px;
+  }
+
+  .contact-icons i {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+    margin: 20px 10px 20px 0;
+  }
+
+  .contact-form form {
+    margin-top: 20%;
+  }
+
+  .contact-form form input,
+  form textarea {
+    width: 100%;
+  }
+
+  .contact-form form .send {
+    width: 100%;
+    padding: 14px 0;
+    font-size: 16px;
+  }
+}
+
+/* For mobile devices */
+@media (max-width: 600px) {
+  .contact {
+    padding-left: 10px;
+    margin-top: 50px;
+    gap: 1.5rem;
+  }
+
+  .contact-text h2 {
+    font-size: 40px;
+    margin-left: 0;
+  }
+
+  .contact-text h4 {
+    font-size: 20px;
+  }
+
+  .contact-text p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .contact-list i {
+    font-size: 16px;
+  }
+
+  .contact-icons i {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    margin: 15px 8px 15px 0;
+  }
+
+  .contact-form form {
+    margin-top: 15%;
+  }
+
+  .contact-form form input,
+  form textarea {
+    width: 100%;
+    padding: 14px;
+  }
+
+  .contact-form form .send {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 14px;
+  }
+
+  .last-text {
+    font-size: 14px;
+    margin-top: 40px;
+  }
+
+  .top i {
+    font-size: 18px;
+    padding: 8px;
+  }
+}
 
 
 
@@ -976,10 +1252,6 @@ section{
     }
     .contact-text h2 {
         font-size: 70px;
-    }
-    .portfolio-content {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
     }
 }
 @media (max-width: 768px) {
